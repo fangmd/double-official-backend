@@ -11,6 +11,9 @@ COPY ["./package.json", "./package-lock.json", "tsconfig.json", "./.env", "./.en
 # run npm install before copy ./src can help you cache images
 RUN npm install
 
+# Copy files to image
+COPY ["./.env", "./.env.production", "/app/"]
+
 COPY ["./src", "/app/src"]
 
 CMD ["npm", "start"]
