@@ -18,8 +18,8 @@ if [ -n "$container" ]; then
     docker container rm $container
 
     echo "start container"
-    docker run --name double-official-backend -d -p 3021:3021 -p 3306:3306 double-official-backend
+    docker run --name double-official-backend -d -p 3021:3021 double-official-backend
 else
     echo "start container"
-    docker run --name double-official-backend -d -p 3021:3021 -p 3306:3306 double-official-backend  
+    docker run --name double-official-backend -d -p 3021:3021 double-official-backend  
 fi
