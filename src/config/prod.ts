@@ -1,7 +1,7 @@
 import { IConfig } from './base'
 
 export const prodConf: IConfig = {
-  port: 9090,
+  port: 3021,
   mysql: {
     host: process.env.DATABASE_HOST || '0.0.0.0',
     port: process.env.DATABASE_PORT || '3306',

@@ -13,7 +13,7 @@ id，createTime, updateTime
 ```
 
 
-# /admin/user/login
+# /api/admin/login
 
 ```
 POST: username, password
@@ -21,7 +21,7 @@ POST: username, password
 
 >用户先在数据库创建个 admin
 
-# /admin/menu
+# /api/admin/menu
 
 ```
 GET: 菜单列表(多级)

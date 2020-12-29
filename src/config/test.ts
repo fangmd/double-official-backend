@@ -4,7 +4,7 @@ import { IConfig } from './base'
  * 线上测试环境 & 本地 docker 环境
  */
 export const testConf: IConfig = {
-  port: 3009,
+  port: 3021,
   mysql: {
     host: process.env.DATABASE_HOST || '0.0.0.0',
     port: process.env.DATABASE_PORT || '3306',

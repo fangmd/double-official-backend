@@ -4,9 +4,7 @@ export class CreateUser {
   @IsNotEmpty()
   username?: string
 
-  @MinLength(8, {
-    message: 'Password Length must >= 8',
-  })
+  @IsNotEmpty()
   password?: string
 }
 
@@ -24,8 +22,6 @@ export class UserLogin {
   @IsNotEmpty()
   username?: string
 
-  @MinLength(8, {
-    message: 'Password Length must >= 8',
-  })
+  @IsNotEmpty()
   password?: string
 }
