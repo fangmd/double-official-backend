@@ -4,6 +4,7 @@
 
 import { Context } from 'koa'
 import HttpC from '../constants/http-c'
+import { MenuService } from '../service/menu-service'
 import UserService from '../service/user-service'
 import HttpResult from '../utils/http-result'
 import JwtUtils from '../utils/jwt-utils'
@@ -21,7 +22,23 @@ export default class AdminController {
     }
     ctx.body = HttpResult.success({
       username: userInfo.username,
+      userId: userInfo.id,
       jwt: JwtUtils.sign({ username: userInfo.username, id: userInfo.id }),
+    })
+  }
+
+  /**
+   * 获取 菜单
+   * 目前全部返回，没有权限控制
+   */
+  public static async menus(ctx: Context) {
+    const userId = JwtUtils.getUserId(ctx)!
+    const userInfo = await UserService.getUserById(userId)
+    const menus = await MenuService.getAllMenu()
+    ctx.body = HttpResult.success({
+      username: userInfo!.username,
+      userId: userInfo!.id,
+      menus: menus,
     })
   }
 }

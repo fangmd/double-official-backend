@@ -24,4 +24,9 @@ describe('routers: /api/admin', () => {
     jwt = response.body.data.jwt
     expect(response.body.code).toEqual(HttpC.SUCCESS)
   })
+
+  it('all menu, should be success', async () => {
+    const response = await server.get('/api/admin/menu').set('Authorization', `Bearer ${jwt}`)
+    expect(response.body.code).toEqual(HttpC.SUCCESS)
+  })
 })

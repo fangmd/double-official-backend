@@ -12,5 +12,6 @@ const router = new Router()
 router.prefix('/api/admin')
 
 router.post('/login', genValidator(UserLogin), AdminController.login)
+router.get('/menu', AdminController.menus)
 
 export default router
