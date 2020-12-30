@@ -32,8 +32,8 @@ export default class HttpResult {
   }
 
   // Create Fail HttpResult
-  static fail(code: number): HttpResult {
-    return new HttpResult(code, HttpMsg.getMsg(code))
+  static fail(code?: number): HttpResult {
+    return new HttpResult(code ?? HttpC.FAIL, HttpMsg.getMsg(code ?? HttpC.FAIL))
   }
 
   // 参数错误

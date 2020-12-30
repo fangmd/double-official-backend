@@ -7,6 +7,7 @@ import HttpC from './http-c'
 export default class HttpMsg {
   public static readonly map: Map<number, string> = new Map([
     [HttpC.SUCCESS, '成功'],
+    [HttpC.FAIL, '失败'],
     [HttpC.AUTH_ERROR, '未登陆'],
     [HttpC.PWD_ERROR, '密码错误'],
     [HttpC.USER_NOT_EXIST, '用户不存在'],

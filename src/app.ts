@@ -14,6 +14,7 @@ import globalErrorHandle from './middleware/global-error'
 import example from './routers/example'
 import user from './routers/user'
 import adminRouter from './routers/admin'
+import blogRouter from './routers/blog'
 import { isUniTest } from './utils/env'
 import { Server } from 'http'
 
@@ -34,6 +35,8 @@ app.use(
 
 // router start
 app.use(adminRouter.routes()).use(adminRouter.allowedMethods())
+app.use(blogRouter.routes()).use(blogRouter.allowedMethods())
+
 
 app.use(example.routes()).use(example.allowedMethods())
 app.use(user.routes()).use(user.allowedMethods())

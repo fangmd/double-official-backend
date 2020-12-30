@@ -51,4 +51,8 @@ export default class HttpC {
    * 创建用户失败
    */
   public static readonly CREATE_USER_FAIL = 2009
+  /**
+   * 失败
+   */
+  public static readonly FAIL = 2010
 }
