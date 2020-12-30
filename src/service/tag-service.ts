@@ -18,11 +18,29 @@ export async function createTag(name: string) {
 }
 
 /**
- * 获取所有 tag
+ * 添加 tag
  */
-export async function queryTags() {
+export async function createTags(names: string) {
+  const tagNames = names.split(',')
+  for (const name of tagNames) {
+    const catResults = await queryTags(name)
+    if (!(catResults != null && catResults.length > 0)) {
+      await createTag(name)
+    }
+  }
+}
+
+/**
+ * 获取所有 tag
+ * @param name 标签名称
+ */
+export async function queryTags(name?: string) {
   const rep = getRepository(Tag)
-  return rep.find()
+  const where: any = {}
+  if (name) {
+    where.name = name
+  }
+  return rep.find({ where })
 }
 
 /**

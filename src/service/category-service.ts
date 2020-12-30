@@ -20,9 +20,13 @@ export async function createCategory(name: string) {
 /**
  * 获取所有 category
  */
-export async function queryCategories() {
+export async function queryCategories(name?: string) {
   const rep = getRepository(Category)
-  return rep.find()
+  const where: any = {}
+  if (name) {
+    where.name = name
+  }
+  return rep.find({ where })
 }
 
 /**

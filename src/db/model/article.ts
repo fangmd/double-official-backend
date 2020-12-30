@@ -18,4 +18,6 @@ export class Article extends BaseModel {
   show!: boolean
   @Column({ comment: '文章内容 md 格式', type: 'text', nullable: true })
   content?: string
+  @Column({ comment: '文章文件时间', nullable: true })
+  dateStr?: string
 }

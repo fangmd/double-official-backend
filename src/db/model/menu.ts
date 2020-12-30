@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryColumn, Unique } from 'typeorm'
 import BaseModel from './base-model'
 
 @Entity()
-@Unique(['menuName', 'id'])
+@Unique(['id'])
 export class Menu extends BaseModel {
   @PrimaryColumn()
   id!: string
