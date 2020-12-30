@@ -1,3 +1,7 @@
+/**
+ * @description admin 菜单操作
+ */
+
 import { getRepository, Repository } from 'typeorm'
 import { Menu } from '../db/model/menu'
 
