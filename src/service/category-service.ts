@@ -11,6 +11,10 @@ import getUniqueID from '../utils/snowflake'
  */
 export async function createCategory(name: string) {
   const rep = getRepository(Category)
+  const categoryDB = await queryCategories(name)
+  if (categoryDB) {
+    return categoryDB
+  }
   const category = new Category()
   category.id = `${getUniqueID()}`
   category.name = name

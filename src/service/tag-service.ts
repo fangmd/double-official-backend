@@ -11,6 +11,10 @@ import getUniqueID from '../utils/snowflake'
  */
 export async function createTag(name: string) {
   const rep = getRepository(Tag)
+  const tagDB = await queryTags(name)
+  if(tagDB){
+    return tagDB
+  }
   const tag = new Tag()
   tag.id = `${getUniqueID()}`
   tag.name = name

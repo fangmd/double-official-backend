@@ -58,11 +58,17 @@ export async function createArticle(
  * 获取 article
  * TODO: add query params
  */
-export async function queryArticles(title?: string) {
+export async function queryArticles(title?: string, id?: string, category?: string) {
   const rep = getRepository(Article)
   const where: any = {}
   if (title) {
     where.title = title
+  }
+  if (id) {
+    where.id = id
+  }
+  if (category) {
+    where.category = category
   }
   return rep.find({ where })
 }
@@ -118,7 +124,7 @@ export async function createArticleFromFile(
       if (bannerImg) {
         articleDB[0].bannerImg = bannerImg
       }
-      rep.save(articleDB[0])
+      return rep.save(articleDB[0])
     }
   } else {
     return createArticle(title, bannerImg, category, tags, content, dateStr)

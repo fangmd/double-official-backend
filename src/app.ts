@@ -28,7 +28,16 @@ app.use(cors())
 app.use(Bodyparser())
 app.use(
   jwt({ secret: jwtSecret }).unless({
-    path: [/^\/public/, /^\/example/, '/login', '/register', '/api/admin/login'],
+    path: [
+      /^\/public/,
+      /^\/example/,
+      '/login',
+      '/register',
+      '/api/admin/login',
+      '/api/blog/categories',
+      '/api/blog/articles',
+      '/api/blog/article',
+    ],
   })
 )
 // middleware end
@@ -36,7 +45,6 @@ app.use(
 // router start
 app.use(adminRouter.routes()).use(adminRouter.allowedMethods())
 app.use(blogRouter.routes()).use(blogRouter.allowedMethods())
-
 
 app.use(example.routes()).use(example.allowedMethods())
 app.use(user.routes()).use(user.allowedMethods())

@@ -22,3 +22,11 @@ export class AddArticle {
   // tags?: string
   // content?: string
 }
+
+/**
+ * 获取 article 详情
+ */
+export class GetArticle {
+  @IsNotEmpty()
+  id?: string
+}

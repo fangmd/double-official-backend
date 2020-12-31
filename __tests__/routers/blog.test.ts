@@ -34,7 +34,7 @@ describe('routers: /api/blog', () => {
 
   // tag
   it('add tag, should be success', async () => {
-    const response = await server.post('/api/tag').send(`name=${testName}`).set('Authorization', `Bearer ${jwt}`)
+    const response = await server.post('/api/blog/tag').send(`name=${testName}`).set('Authorization', `Bearer ${jwt}`)
     expect(response.body.code).toEqual(HttpC.SUCCESS)
   })
 
@@ -44,13 +44,13 @@ describe('routers: /api/blog', () => {
   })
 
   it('get tags, should be success', async () => {
-    const response = await server.get('/api/tags').set('Authorization', `Bearer ${jwt}`)
+    const response = await server.get('/api/blog/tags').set('Authorization', `Bearer ${jwt}`)
     expect(response.body.code).toEqual(HttpC.SUCCESS)
   })
 
   //  category
   it('add category, should be success', async () => {
-    const response = await server.post('/api/category').send(`name=${testName}`).set('Authorization', `Bearer ${jwt}`)
+    const response = await server.post('/api/blog/category').send(`name=${testName}`).set('Authorization', `Bearer ${jwt}`)
     expect(response.body.code).toEqual(HttpC.SUCCESS)
   })
 
@@ -60,14 +60,14 @@ describe('routers: /api/blog', () => {
   })
 
   it('get categories, should be success', async () => {
-    const response = await server.get('/api/categories').set('Authorization', `Bearer ${jwt}`)
+    const response = await server.get('/api/blog/categories').set('Authorization', `Bearer ${jwt}`)
     expect(response.body.code).toEqual(HttpC.SUCCESS)
   })
 
   // article
   it('add article, should be success', async () => {
     const response = await server
-      .post('/api/article')
+      .post('/api/blog/article')
       .send(`title=${testName}&bannerImg=test`)
       .set('Authorization', `Bearer ${jwt}`)
     testArticleId = response.body.data.id
@@ -80,7 +80,7 @@ describe('routers: /api/blog', () => {
   })
 
   it('get articles, should be success', async () => {
-    const response = await server.get('/api/articles').set('Authorization', `Bearer ${jwt}`)
+    const response = await server.get('/api/blog/articles').set('Authorization', `Bearer ${jwt}`)
     expect(response.body.code).toEqual(HttpC.SUCCESS)
   })
 })
