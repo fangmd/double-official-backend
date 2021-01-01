@@ -7,6 +7,7 @@ import { Article } from '../db/model/article'
 import getUniqueID from '../utils/snowflake'
 import { createCategory } from './category-service'
 import { createTags } from './tag-service'
+import { PAGE_SIZE } from '../constants/c'
 
 /**
  * 添加一个文章
@@ -58,7 +59,13 @@ export async function createArticle(
  * 获取 article
  * TODO: add query params
  */
-export async function queryArticles(title?: string, id?: string, category?: string) {
+export async function queryArticles(
+  title?: string,
+  id?: string,
+  category?: string,
+  page: number = 0,
+  size: number = PAGE_SIZE
+) {
   const rep = getRepository(Article)
   const where: any = {}
   if (title) {
@@ -70,7 +77,10 @@ export async function queryArticles(title?: string, id?: string, category?: stri
   if (category) {
     where.category = category
   }
-  return rep.find({ where })
+  if (page > 0) {
+    page--
+  }
+  return rep.findAndCount({ where, take: size, skip: page * size })
 }
 
 /**
@@ -99,7 +109,8 @@ export async function createArticleFromFile(
   dateStr?: string
 ) {
   const rep = getRepository(Article)
-  const articleDB = await queryArticles(title)
+  const dbRet = await queryArticles(title)
+  const articleDB = dbRet[0]
   if (articleDB && articleDB.length > 0) {
     if (dateStr !== articleDB[0].dateStr) {
       if (category) {

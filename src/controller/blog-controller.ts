@@ -54,9 +54,9 @@ export async function addCategory(ctx: Context) {
  * 获取所有 article
  */
 export async function getArticles(ctx: Context) {
-  const { category } = ctx.request.query
-  const result = await queryArticles(undefined, undefined, category)
-  ctx.body = HttpResult.success({ list: result })
+  const { category, page, size } = ctx.request.query
+  const result = await queryArticles(undefined, undefined, category, page, size)
+  ctx.body = HttpResult.success({ list: result[0], totalCnt: result[1] })
 }
 
 /**
@@ -65,7 +65,7 @@ export async function getArticles(ctx: Context) {
 export async function getArticleDetail(ctx: Context) {
   const { id } = ctx.request.query
   const result = await queryArticles(undefined, id)
-  ctx.body = HttpResult.success(result[0] ?? {})
+  ctx.body = HttpResult.success(result[0][0] ?? {})
 }
 
 /**
