@@ -80,7 +80,14 @@ export async function queryArticles(
   if (page > 0) {
     page--
   }
-  return rep.findAndCount({ where, take: size, skip: page * size })
+  return rep.findAndCount({
+    where,
+    take: size,
+    skip: page * size,
+    order: {
+      createTime: 'DESC',
+    },
+  })
 }
 
 /**
