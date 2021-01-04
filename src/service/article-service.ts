@@ -115,6 +115,7 @@ export async function createArticleFromFile(
   content?: string,
   dateStr?: string
 ) {
+  console.log(category)
   const rep = getRepository(Article)
   const dbRet = await queryArticles(title)
   const articleDB = dbRet[0]
